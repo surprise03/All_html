@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Dropdown</title>
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <label for="main-dropdown">Choose an option:</label>
+  <select id="main-dropdown" onchange="handleDropdownChange()">
+    <option value="">--Select an option--</option>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+  </select>
+
+  <!-- Extra dropdown fields for Option 1 -->
+  <div id="extra-dropdowns" class="hidden">
+    <label for="dropdown-1">Dropdown 1:</label>
+    <select id="dropdown-1">
+      <option value="A">A</option>
+      <option value="B">B</option>
+    </select>
+    <br><br>
+    <label for="dropdown-2">Dropdown 2:</label>
+    <select id="dropdown-2">
+      <option value="X">X</option>
+      <option value="Y">Y</option>
+    </select>
+  </div>
+
+  <!-- Text for Option 2 -->
+  <div id="text-message" class="hidden">
+    <p>You selected Option 2!</p>
+  </div>
+
+  <script>
+    function handleDropdownChange() {
+      const mainDropdown = document.getElementById('main-dropdown');
+      const extraDropdowns = document.getElementById('extra-dropdowns');
+      const textMessage = document.getElementById('text-message');
+
+      // Hide both sections initially
+      extraDropdowns.classList.add('hidden');
+      textMessage.classList.add('hidden');
+
+      // Show based on selected value
+      if (mainDropdown.value === '1') {
+        extraDropdowns.classList.remove('hidden');
+      } else if (mainDropdown.value === '2') {
+        textMessage.classList.remove('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
